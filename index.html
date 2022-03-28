@@ -28,9 +28,13 @@
           <input type="text" name="username" id="username" autofocus="true" class="form-input"/>
           <button type="submit" class="btn">Get User</button>
         </form>
+      </div> <!-- end of card -->
     </div>
 
-    <div class="col-12 col-md-8"></div>
+    <div class="col-12 col-md-8"> <!-- right column to diplsay data -->
+      <h2 class="subtitle">Showing repos for: <span id="repo-search-term"></span></h2>
+      <div id="repos-container" class="list-group"></div>
+    </div>  <!-- end of right column-->
   </main>
 <script src="./assets/js/homepage.js"></script>
 </body>
