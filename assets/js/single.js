@@ -1,4 +1,5 @@
 var issueContainerEl = document.querySelector("#issues-container");
+var limitWarningEl = document.querySelector("#limit-warning");
 
 
 var getRepoIssues = function(repo) {
@@ -10,6 +11,10 @@ var getRepoIssues = function(repo) {
             response.json().then(function(data){
                     //pass response data to DOM (displayIssues) function
                 displayIssues(data);
+                    //check if api has paginated issues and send the user/repo parameters
+                if(response.headers.get("Link")){
+                    displayWarning(repo)
+                }
             });//end of inner .then
         }
         else {
@@ -42,7 +47,7 @@ var displayIssues = function(issues) {
 
             //create a type element
         var typeEl = document.createElement("span");
-            //check if issue is an catual issue or pull request
+            //check if issue is an actual issue or pull request
         if(issues[i].pull_request){
             typeEl.textContent = "(Pull Request)";
         } else {
@@ -55,3 +60,16 @@ var displayIssues = function(issues) {
         issueContainerEl.appendChild(issueEl);
     }
 }; //end of display issues
+
+
+var displayWarning = function(repo) {
+        //add text to warning container
+    limitWarningEl.textcontent = "To see more than 30 issues, visit ";
+
+    var linkEL = document.createElement("a");
+    linkEL.textContent = "See More Issues on GitHub.com";
+    linkEL.setAttribute("href", "https://github.com/" + repo + "/issues");
+    linkEL.setAttribute("target", "_blank");
+        //appen to warning container
+    limitWarningEl.appendChild(linkEL);
+};
