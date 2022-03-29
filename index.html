@@ -20,18 +20,30 @@
 
 
   <main class="flex-row justify-space-between">
-    <div class="col-12 col-md-4">
-      <div class="card">
-        <h3 class="card-header text-uppercase">Search By User</h3>
-        <form id="user-form" class="card-body">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" name="username" id="username" autofocus="true" class="form-input"/>
-          <button type="submit" class="btn">Get User</button>
-        </form>
-      </div> <!-- end of card -->
+      <div class="col-12 col-md-4">
+          <div class="card">
+            <h3 class="card-header text-uppercase">Search By User</h3>
+            <form id="user-form" class="card-body">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" name="username" id="username" autofocus="true" class="form-input"/>
+              <button type="submit" class="btn">Get User</button>
+            </form>
+        </div> <!-- end of card -->
+
+        <div class="card">
+            <h3 class="card-header text-uppercase">Search By Topic</h3>
+            <div id="language-buttons" class="card-body">
+              <button class="btn" data-language="html">HTML</button>
+              <button class="btn" data-language="css">CSS</button>
+              <button class="btn" data-language="javascript">JavaScript</button>
+            </div>
+        </div> <!-- end of card -->
     </div>
 
-    <div class="col-12 col-md-8"> <!-- right column to diplsay data -->
+
+
+
+    <div class="col-12 col-md-8"> <!-- right column to display data -->
       <h2 class="subtitle">Showing repos for: <span id="repo-search-term"></span></h2>
       <div id="repos-container" class="list-group"></div>
     </div>  <!-- end of right column-->
